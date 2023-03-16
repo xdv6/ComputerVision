@@ -9,8 +9,8 @@ from glob import glob
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 import matplotlib.pyplot as plt
 
-sources = sorted(glob("Images/road?.png"))
-labels = sorted(glob("Images/road?_skymask.png"))
+sources = sorted(glob("afbeeldingen/road?.png"))
+labels = sorted(glob("afbeeldingen/road?_skymask.png"))
 
 features = np.array([])
 values = np.array([])
@@ -33,7 +33,6 @@ for source, label in zip(sources, labels):
     values = np.append(values, lab)
 
 # appending flattens the array, so you have to restore the dimensions to a Kx3 array, where every pixel of the image is 1 row and the blue, green and red intensities are in the three columns
-# -1 betekent dat je dan kolom instelt met #elementen / values.shape[0]
 features = np.reshape(features, (values.shape[0], -1))
 
 # this discards any pixel with value not 0 or 255 from the arrays for training
